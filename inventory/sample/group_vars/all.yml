@@ -1,5 +1,5 @@
 ---
-k3s_version: v1.30.2+k3s2
+k3s_version: v1.31.2+k3s1
 # this is the user that has ssh access to these machines
 ansible_user: hardik
 systemd_dir: /etc/systemd/system
@@ -82,7 +82,6 @@ extra_args: >-
 
 extra_server_args: >-
   {{ extra_args }}
-  {{ '--node-taint node-role.kubernetes.io/master=true' if k3s_master_taint else '' }}
   {% if calico_iface is defined or cilium_iface is defined %}
   --flannel-backend=none
   --disable-network-policy
